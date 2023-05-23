@@ -3,8 +3,16 @@ export abstract class View<T> {
      protected elemento: HTMLElement;
      private escape = false;
      
-     constructor(seletor: string, escape?: boolean){
-          this.elemento = document.querySelector(seletor);
+     constructor(seletor: string, escape?: boolean) {
+          const elemento = document.querySelector(seletor);
+          if(elemento){
+               this.elemento = elemento as HTMLInputElement;
+          } else{
+               throw Error(`Seletor $(seletor) não existe no DOM. Verifique!`)
+          }
+          if (escape) {
+               this.escape = escape;
+          }
      }
 
      public update (model: T): void {

@@ -9,13 +9,13 @@ export class NegociacaoController{
      private inputQuantidade: HTMLInputElement;
      private inputValor: HTMLInputElement;
      private negociacoes = new Negociacoes();
-     private negociacoesView = new NegociacoesView('#negociacoesView');
+     private negociacoesView = new NegociacoesView('#negociacoesView', true);
      private mensagemView = new MensagemView('#mensagemView')
 
      constructor(){
-          this.inputData = document.querySelector('#data');
-          this.inputQuantidade = document.querySelector('#quantidade');
-          this.inputValor = document.querySelector('#valor');
+          this.inputData = <HTMLInputElement>document.querySelector('#data');
+          this.inputQuantidade = document.querySelector('#quantidade') as HTMLInputElement;
+          this.inputValor = <HTMLInputElement>document.querySelector('#valor');
           this.negociacoesView.update(this.negociacoes);
      }
 
@@ -40,6 +40,8 @@ export class NegociacaoController{
                && data.getDay() < DiasDaSemana.SABADO;
      }
 
+     // opcao para negociacao sem usar instancia
+     
      // private criaNegociacao(): Negociacao{
      //      const exp = /-/g;
      //      const date = new Date(this.inputData.value.replace(exp, ','));
