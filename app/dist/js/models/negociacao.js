@@ -5,7 +5,7 @@ export class Negociacao {
         this.valor = valor;
     }
     get volume() {
-        return this.valor * this.quantidade;
+        return this.quantidade * this.valor;
     }
     get data() {
         const data = new Date(this._data.getTime());
